@@ -18,7 +18,7 @@
 	<div class="navbar-collapse collapse">
 	  <div class="navbar-form navbar-right">
 		<?php if (!isset($fb_profile)) { ?>
-		<button class="btn btn-jumbo" id="fb-login"><span class="fa fa-facebook jump-5"></span> Entrar com Facebook</button>
+		<button class="btn btn-jumbo fb-login"><span class="fa fa-facebook jump-5"></span> Entrar com Facebook</button>
 		<?php } else { ?>
 		<div class="btn-group">
 		  <button type="button" class="btn btn-jumbo dropdown-toggle" data-toggle="dropdown">
@@ -27,7 +27,7 @@
 		  <ul class="dropdown-menu" role="menu">
 			<li><a href="<?php printlink("painel"); ?>">Painel do usuário</a></li>
 			<li class="divider"></li>
-			<li><a href="<?php printlink("sair"); ?>" id="fb-logout">Sair</a></li>
+			<li><a href="<?php printlink("sair"); ?>" class="fb-logout">Sair</a></li>
 		  </ul>
 		</div>
 		<?php } ?>

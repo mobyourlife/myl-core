@@ -8,7 +8,7 @@ window.fbAsyncInit = function() {
 	});
 }
 
-$('#fb-login').click(function() {
+$('.fb-login').click(function() {
 	FB.login(function(response) {
 		if (response.authResponse) {
 			location.reload();
@@ -16,7 +16,7 @@ $('#fb-login').click(function() {
 	});
 });
 
-$('#fb-logout').click(function() {
+$('.fb-logout').click(function() {
 	if (FB.getAuthResponse()) {
 		FB.logout();
 	};
