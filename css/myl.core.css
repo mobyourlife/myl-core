@@ -1,0 +1,71 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+.navbar-muf {
+	background-color: #fff;
+	border-color: #e7e7e7;
+}
+
+.navbar-brand {
+	margin-top: -6px;
+}
+
+.jumbotron {
+	background-color: #009fe3;
+	background-image: url(../img/jumbg.jpg);
+	background-repeat: repeat;
+	color: #fff;
+}
+
+.btn-jumbo {
+	background-color: #fff;
+	border-color: #3071a9;
+	color: #000;
+}
+
+.btn-jumbo:hover{
+	background-color: #f58634;
+	border-color: #f1b88f;
+	color: #fff;
+}
+
+.lead {
+	font-size: 33px;margin-bottom:0px;
+}
+
+.center {
+	text-align: center;
+}
+
+ul.navbar-nav li.active {
+	background-color: #4fc1f1;
+	color: #fff;
+}
+
+ul.navbar-nav li.active a {
+	color: #fff;
+}
+
+div.notice {
+	margin-top: 50px;
+}
+
+div.notice span.label {
+	padding: 5px 20px;
+}
+
+.jump-5 {
+	margin-right: 5px;
+}
+
+.fb-login {
+	margin-top: 6px;
+}

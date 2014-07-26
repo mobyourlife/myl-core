@@ -1,0 +1,3 @@
+# Não deve incluir configurações de produção no repositório!
+config.inc.php
+
