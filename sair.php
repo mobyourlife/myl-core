@@ -8,6 +8,6 @@ foreach ($_SESSION as $key => $value)
 
 session_destroy();
 
-header("Location: ./");
+header("Location: " . $website_root . "/");
 
 ?>
