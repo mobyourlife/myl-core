@@ -41,7 +41,7 @@ require_once "core.inc.php";
 										<tbody>
 											<tr>
 												<td>Tipo de conta:</td>
-												<td><?php print(get_account_type($fb_profile->getProperty('id')) == "personal" ? "Pessoal" : "Página"); ?></td>
+												<td><?php print(get_account_type($fb_profile->getProperty('id')) == "profile" ? "Pessoal" : "Página"); ?></td>
 											</tr>
 											<tr>
 												<td>Data de cadastro:</td>

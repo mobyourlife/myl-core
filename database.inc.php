@@ -92,7 +92,7 @@ function get_account_type($fb_uid)
 	
 	$sql = sprintf("SELECT page_fbid FROM myl_accounts WHERE admin_uid = %s;", $fb_uid);
 	$res = mysqli_query($db, $sql);
-	$acctype = "personal";
+	$acctype = "profile";
 	
 	if (mysqli_num_rows($res) != 0)
 	{

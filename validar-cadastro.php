@@ -21,7 +21,7 @@ if(isset($_POST[$form_names['full_name']], $_POST[$form_names['email_addr']], $_
 		$full_name = $_POST[$form_names['full_name']];
 		$email_addr = $_POST[$form_names['email_addr']];
 		$account_type = $_POST[$form_names['account_type']];
-		$account_id = $_POST[$form_names['account_id']];
+		$account_id = ($account_type == "profile") ? $user_id : $_POST[$form_names['account_id']];
 		$subdomain = $_POST[$form_names['subdomain']];
 		
 		/* Verifica mais uma vez se o subdomínio está livre. */
