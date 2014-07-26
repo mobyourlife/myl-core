@@ -37,7 +37,7 @@ if(isset($_POST[$form_names['full_name']], $_POST[$form_names['email_addr']], $_
 	}
 	
 	/* Gera novos nomes de formulário. */
-	$form_names = $csrf->form_names(array('user_id', ' full_name', 'email_addr', 'account_type', 'account_id', 'subdomain'), true);
+	$form_names = $csrf->form_names(array('user_id', 'full_name', 'email_addr', 'account_type', 'account_id', 'subdomain'), true);
 	
 	/* Retorna para a página de cadastro em caso de falhas. */
 	header("Location: " . $website_root . "/confirmar-cadastro");
