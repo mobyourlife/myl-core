@@ -9,12 +9,11 @@ $token_value = $csrf->get_token($token_id);
  $form_names = $csrf->form_names(array('full_name', 'account_type', 'account_id', 'subdomain'), false);
 
 /* Sugestão de subdomínio. */
-$fb_accounts = get_accounts()->getProperty('data');
+$fb_accounts = null; //get_accounts()->getProperty('data');
 $sugestao = $fb_profile->getProperty('name');
 $sugestao = strtolower($sugestao);
 $sugestao = remove_accents($sugestao);
 $sugestao = str_replace(" ", "", $sugestao);
-*/
 
 ?>
 <!DOCTYPE html>
