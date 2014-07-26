@@ -19,7 +19,7 @@ require_once "core.inc.php";
 		<div class="row">
 		  <div class="col-md-8">
 			<div class="well well-sm">
-			  <form class="form-horizontal" action="" method="post">
+			  <form id="mail-form" class="form-horizontal" action="<?php printlink("enviar-email"); ?>" method="post">
 			  <fieldset>
 				<legend class="text-center">Fale conosco</legend>
 		
