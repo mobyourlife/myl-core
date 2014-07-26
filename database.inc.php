@@ -22,4 +22,17 @@ function is_user_registered($fb_uid)
 	return ($count == 1) ? true : false;
 }
 
+function is_subdomain_taken($subdomain)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("SELECT 1 FROM myl_subdomains WHERE subdomain = '%s';", $subdomain);
+	$res = mysqli_query($db, $sql);
+	$count = mysqli_num_rows($res);
+	
+	mysqli_close($db);
+	
+	return ($count == 1) ? true : false;
+}
+
 ?>

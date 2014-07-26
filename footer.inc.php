@@ -25,7 +25,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="<?php printlink("js/bootstrap.min.js"); ?>"></script>
-<script src="<?php printlink("js/myl.strap-radio.js"); ?>"></script>
+<script src="<?php printlink("js/myl.events.js"); ?>"></script>
 <script src="<?php printlink("js/facebook.sdk.js"); ?>"></script>
 <script src="<?php printlink("js/facebook.login.js"); ?>"></script>
 <script src="<?php printlink("js/google.analytics.js"); ?>"></script>

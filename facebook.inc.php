@@ -58,4 +58,13 @@ if (isset($fb_session))
 	$fb_profile = $response->getGraphObject();
 }
 
+function fb_get_accounts()
+{
+	global $fb_session;
+	$request = new FacebookRequest($fb_session, 'GET', '/me/accounts');
+	$response = $request->execute();
+	$fb_accounts = $response->getGraphObject();
+	return $fb_accounts->getProperty('data');
+}
+
 ?>

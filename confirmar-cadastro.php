@@ -6,14 +6,10 @@ require_once "csrf.inc.php";
 $csrf = new csrf();
 $token_id = $csrf->get_token_id();
 $token_value = $csrf->get_token($token_id);
- $form_names = $csrf->form_names(array('full_name', 'account_type', 'account_id', 'subdomain'), false);
+ $form_names = $csrf->form_names(array('full_name', 'email_addr', 'account_type', 'account_id', 'subdomain'), false);
 
-/* Sugestão de subdomínio. */
-$fb_accounts = null; //get_accounts()->getProperty('data');
-$sugestao = $fb_profile->getProperty('name');
-$sugestao = strtolower($sugestao);
-$sugestao = remove_accents($sugestao);
-$sugestao = str_replace(" ", "", $sugestao);
+/* Consulta as páginas do usuário logado. */
+$fb_accounts = fb_get_accounts();
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +45,7 @@ $sugestao = str_replace(" ", "", $sugestao);
 		</div>
 		
 		<div class="col-md-8 col-md-offset-2">
-			<form class="form-horizontal" action="<?php printlink("validar-cadastro"); ?>" method="post">
+			<form id="register-form" class="form-horizontal" action="<?php printlink("validar-cadastro"); ?>" method="post">
 			  <input type="hidden" name="<?php print($token_id); ?>" value="<?php print($token_value); ?>" />
 			  <fieldset>
 			  
@@ -58,6 +54,14 @@ $sugestao = str_replace(" ", "", $sugestao);
 				  <label class="col-md-3 control-label" for="name">Nome</label>
 				  <div class="col-md-9">
 					<input id="full_name" name="<?php print($form_names['full_name']); ?>" type="text" placeholder="Seu nome" class="form-control" value="<?php print($fb_profile->getProperty('name')); ?>" readonly="readonly">
+				  </div>
+				</div>
+			  
+				<!-- Endereço de email -->
+				<div class="form-group">
+				  <label class="col-md-3 control-label" for="name">Email</label>
+				  <div class="col-md-9">
+					<input id="email_addr" name="<?php print($form_names['email_addr']); ?>" type="text" placeholder="Seu email" class="form-control" value="<?php print($fb_profile->getProperty('email')); ?>" readonly="readonly">
 				  </div>
 				</div>
 		
@@ -125,26 +129,16 @@ $sugestao = str_replace(" ", "", $sugestao);
 				  <label class="col-md-3 control-label" for="name">Subdomínio desejado</label>
 				  <div class="col-md-5">
 					<div class="input-group">
-						<input id="subdomain" name="<?php print($form_names['subdomain']); ?>" type="text" placeholder="Subdomínio desejado" class="form-control" value="<?php print($sugestao); ?>">
+						<input id="subdomain" name="<?php print($form_names['subdomain']); ?>" type="text" class="form-control">
 						<span class="input-group-addon">.mobyourlife.com.br</span>
 					</div>
 				  </div>
 				  <div class="col-md-4">
-					<span class="btn text-success"><strong>Disponível!</strong></span>
+					<span id="subdomain-status" class="btn text-danger" style="display:none"><strong></strong></span>
 				  </div>
 				</div>
-				
-				<?php
-				/*
-				<div class="form-group">
-					<div class="col-md-9 col-md-offset-3">
-						Não se preocupe, você poderá vincular um domínio próprio após finalizar o cadastro.
-					</div>
-				</div>
-				*/
-				?>
 		
-				<!-- Form actions -->
+				<!-- Envio do formulário -->
 				<div class="form-group">
 				  <div class="col-md-12 text-right">
 					<button type="submit" class="btn btn-info btn-lg">Continuar</button>
@@ -156,6 +150,5 @@ $sugestao = str_replace(" ", "", $sugestao);
 	</div>
 	
 	<?php require "footer.inc.php"; ?>
-	<script src="<?php printlink("js/muf.social-login.js"); ?>"></script>
   </body>
 </html>
