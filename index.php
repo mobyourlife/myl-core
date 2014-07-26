@@ -1,25 +1,5 @@
 <?php
 require_once "core.inc.php";
-require_once $FBLIB . "/FacebookRequest.php";
-require_once $FBLIB . "/FacebookSession.php";
-require_once $FBLIB . "/Entities/AccessToken.php";
-require_once $FBLIB . "/FacebookSDKException.php";
-require_once $FBLIB . "/HttpClients/FacebookCurlHttpClient.php";
-require_once $FBLIB . "/HttpClients/FacebookHttpable.php";
-
-use Facebook\FacebookRequest;
-use Facebook\FacebookSession;
-use Facebook\Entities\AccessToken;
-use Facebook\FacebookSDKException;
-
-FacebookSession::setDefaultApplication($app_id, $app_secret);
-
-var_dump($_SESSION);
-
-$session = new FacebookSession($_SESSION['FBRLH_state']);
-$user_id = $session->getSessionInfo()->asArray()['user_id'];
-var_dump($user_id);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
