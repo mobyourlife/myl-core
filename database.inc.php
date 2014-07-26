@@ -13,7 +13,7 @@ function is_user_registered($fb_uid)
 {
 	$db = db_conectar();
 	
-	$sql = sprintf("SELECT 1 FROM myl_accounts WHERE page_uid = %s;", $fb_uid);
+	$sql = sprintf("SELECT 1 FROM myl_accounts WHERE admin_uid = %s;", $fb_uid);
 	$res = mysqli_query($db, $sql);
 	$count = mysqli_num_rows($res);
 	
@@ -33,6 +33,51 @@ function is_subdomain_taken($subdomain)
 	mysqli_close($db);
 	
 	return ($count == 1) ? true : false;
+}
+
+function register_user($admin_uid, $admin_name, $admin_email, $account_id, $access_token, $subdomain)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("INSERT INTO myl_subdomains (page_fbid, subdomain) VALUES (%s, '%s');"
+		, $account_id, $subdomain);
+	mysqli_query($db, $sql);
+	
+	if (is_subdomain_taken($subdomain))
+	{
+		$sql = sprintf("INSERT INTO myl_accounts (admin_uid, admin_name, admin_email, page_fbid, access_token) VALUES (%s, '%s', '%s', %s, '%s');"
+			, $admin_uid, $admin_name, $admin_email, $account_id, $access_token);
+		mysqli_query($db, $sql);
+	}
+	
+	mysqli_close($db);
+	
+	return is_user_registered($admin_uid);
+}
+
+function get_user_subdomain($fb_uid)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("SELECT subdomain FROM myl_subdomains WHERE page_fbid = (SELECT page_fbid FROM myl_accounts WHERE admin_uid = %s);", $fb_uid);
+	$res = mysqli_query($db, $sql);
+	$subdomain = "";
+	
+	if (mysqli_num_rows($res) != 0)
+	{
+		$row = mysqli_fetch_assoc($res);
+		$subdomain = $row['subdomain'];
+	}
+	
+	mysqli_close($db);
+	
+	return $subdomain;
+}
+
+function get_user_fqdn($fb_uid)
+{
+	$fqdn = sprintf("http://%s.mobyourlife.com.br", get_user_subdomain($fb_uid));
+	return $fqdn;
 }
 
 ?>

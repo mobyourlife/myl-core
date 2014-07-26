@@ -64,7 +64,7 @@ require_once "core.inc.php";
 									</table>
 
 									<div class="center">
-										<a href="#" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
+										<a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>" target="_blank" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
 									</div>
 								</div>
 							</div>

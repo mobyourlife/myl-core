@@ -6,7 +6,7 @@ require_once "csrf.inc.php";
 $csrf = new csrf();
 $token_id = $csrf->get_token_id();
 $token_value = $csrf->get_token($token_id);
- $form_names = $csrf->form_names(array('full_name', 'email_addr', 'account_type', 'account_id', 'subdomain'), false);
+$form_names = $csrf->form_names(array('user_id', 'full_name', 'email_addr', 'account_type', 'account_id', 'subdomain'), false);
 
 /* Consulta as páginas do usuário logado. */
 $fb_accounts = fb_get_accounts();
@@ -47,6 +47,7 @@ $fb_accounts = fb_get_accounts();
 		<div class="col-md-8 col-md-offset-2">
 			<form id="register-form" class="form-horizontal" action="<?php printlink("validar-cadastro"); ?>" method="post">
 			  <input type="hidden" name="<?php print($token_id); ?>" value="<?php print($token_value); ?>" />
+			  <input type="hidden" name="<?php print($form_names['user_id']); ?>" value="<?php print($fb_profile->getProperty('id')); ?>"/>
 			  <fieldset>
 			  
 				<!-- Confirmação de nome -->

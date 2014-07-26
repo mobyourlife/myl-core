@@ -24,7 +24,6 @@ $('#subdomain').keyup(function() {
 });
 
 $('#register-form').submit(function() {
-
 	if ($('#subdomain').val().length == 0) {
 			$('#subdomain-status strong').html('Escolha um subdomínio.');
 			$('#subdomain-status').show();
@@ -37,9 +36,5 @@ $('#register-form').submit(function() {
 			$('#subdomain-status').show();
 			return false;
 		}
-	})
-	.fail(function() {
-		alert("Falha inesperada no servidor!\nPor favor tente novamente.");
-		return false;
 	});
 });

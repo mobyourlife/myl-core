@@ -9,6 +9,7 @@ $require_login[] = "confirmar-cadastro";
 
 /* Páginas permitidas somente para usuários autenticados e registrados. */
 $require_register = array();
+$require_register[] = "pronto";
 $require_register[] = "painel";
 
 /* Páginas permitidas somente para usuários NÃO autenticados. */
