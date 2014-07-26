@@ -6,12 +6,18 @@ window.fbAsyncInit = function() {
 		oauth      : true,
 		version    : 'v2.0'
 	});
-	
-	FB.Event.subscribe('auth.login', function(response) {
-		window.location.reload();
-	});
-	
-	FB.Event.subscribe('auth.logout', function(response) {
-		window.location.reload();
-	});
 }
+
+$('#fb-login').click(function() {
+	FB.login(function(response) {
+		if (response.authResponse) {
+			location.reload();
+		}
+	});
+});
+
+$('#fb-logout').click(function() {
+	if (FB.getAuthResponse()) {
+		FB.logout();
+	};
+});

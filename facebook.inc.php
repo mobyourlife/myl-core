@@ -24,21 +24,33 @@ use Facebook\FacebookSDKException;
 
 FacebookSession::setDefaultApplication($app_id, $app_secret);
 
-$fb_helper = new FacebookJavaScriptLoginHelper();
-
-try
+/* Gets Facebook access token from session, if available. */
+if (isset($_SESSION['FB_ACCESS_TOKEN']))
 {
-	$fb_session = $fb_helper->getSession();
-}
-catch(FacebookRequestException $ex)
-{
-	// When Facebook returns an error
-}
-catch(\Exception $ex)
-{
-	// When validation fails or other local issues
+	$fb_session = new FacebookSession($_SESSION['FB_ACCESS_TOKEN']);
 }
 
+/* Else, try to login through JavaScript SDK cookies. */
+if (!isset($fb_session))
+{
+	$fb_helper = new FacebookJavaScriptLoginHelper();
+
+	try
+	{
+		$fb_session = $fb_helper->getSession();
+		$_SESSION['FB_ACCESS_TOKEN'] = $fb_session->getAccessToken()->__toString();
+	}
+	catch(FacebookRequestException $ex)
+	{
+		// When Facebook returns an error
+	}
+	catch(\Exception $ex)
+	{
+		// When validation fails or other local issues
+	}
+}
+
+/* Get info about logged user. */
 if (isset($fb_session))
 {
 	$request = new FacebookRequest($fb_session, 'GET', '/me');
