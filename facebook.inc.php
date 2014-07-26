@@ -38,7 +38,11 @@ if (!isset($fb_session))
 	try
 	{
 		$fb_session = $fb_helper->getSession();
-		$_SESSION['FB_ACCESS_TOKEN'] = $fb_session->getAccessToken()->__toString();
+		
+		if ($fb_session)
+		{
+			$_SESSION['FB_ACCESS_TOKEN'] = $fb_session->getAccessToken()->__toString();
+		}
 	}
 	catch(FacebookRequestException $ex)
 	{

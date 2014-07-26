@@ -45,8 +45,8 @@ function register_user($admin_uid, $admin_name, $admin_email, $account_id, $acce
 	
 	if (is_subdomain_taken($subdomain))
 	{
-		$sql = sprintf("INSERT INTO myl_accounts (admin_uid, admin_name, admin_email, page_fbid, access_token) VALUES (%s, '%s', '%s', %s, '%s');"
-			, $admin_uid, $admin_name, $admin_email, $account_id, $access_token);
+		$sql = sprintf("INSERT INTO myl_accounts (admin_uid, admin_name, admin_email, page_fbid, register_date, access_token) VALUES (%s, '%s', '%s', %s, '%s', '%s');"
+			, $admin_uid, $admin_name, $admin_email, $account_id, mobdate(), $access_token);
 		mysqli_query($db, $sql);
 	}
 	
@@ -74,10 +74,57 @@ function get_user_subdomain($fb_uid)
 	return $subdomain;
 }
 
+function get_user_domain($fb_uid)
+{
+	$fqdn = sprintf("%s.mobyourlife.com.br", get_user_subdomain($fb_uid));
+	return $fqdn;
+}
+
 function get_user_fqdn($fb_uid)
 {
-	$fqdn = sprintf("http://%s.mobyourlife.com.br", get_user_subdomain($fb_uid));
+	$fqdn = sprintf("http://%s", get_user_domain($fb_uid));
 	return $fqdn;
+}
+
+function get_account_type($fb_uid)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("SELECT page_fbid FROM myl_accounts WHERE admin_uid = %s;", $fb_uid);
+	$res = mysqli_query($db, $sql);
+	$acctype = "personal";
+	
+	if (mysqli_num_rows($res) != 0)
+	{
+		$row = mysqli_fetch_assoc($res);
+		if ($row['page_fbid'] != $fb_uid)
+		{
+			$acctype = "fanpage";
+		}
+	}
+	
+	mysqli_close($db);
+	
+	return $acctype;
+}
+
+function get_register_date($fb_uid)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("SELECT register_date FROM myl_accounts WHERE admin_uid = %s;", $fb_uid);
+	$res = mysqli_query($db, $sql);
+	$regdate = "-";
+	
+	if (mysqli_num_rows($res) != 0)
+	{
+		$row = mysqli_fetch_assoc($res);
+		$regdate = fromsqldate($row['register_date']);
+	}
+	
+	mysqli_close($db);
+	
+	return $regdate;
 }
 
 ?>

@@ -22,7 +22,6 @@ require_once "core.inc.php";
 					<div class="panel-heading">
 						<h3 class="panel-title">Painel do usuário</h3>
 						<span class="pull-right">
-						<!-- Tabs -->
 							<ul class="nav panel-tabs">
 								<li class="active"><a href="#perfil" data-toggle="tab">Perfil</a></li>
 							</ul>
@@ -42,23 +41,19 @@ require_once "core.inc.php";
 										<tbody>
 											<tr>
 												<td>Tipo de conta:</td>
-												<td>-</td>
+												<td><?php print(get_account_type($fb_profile->getProperty('id')) == "personal" ? "Pessoal" : "Página"); ?></td>
 											</tr>
 											<tr>
 												<td>Data de cadastro:</td>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td>Data de expiração:</td>
-												<td>-</td>
+												<td><?php print(get_register_date($fb_profile->getProperty('id'))); ?></td>
 											</tr>
 											<tr>
 												<td>Estado da conta</td>
-												<td>-</td>
+												<td>Ativa</td>
 											</tr>
 											<tr>
 												<td>Seu endereço</td>
-												<td>-</td>
+												<td><a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>" target="_blank"><?php print(get_user_domain($fb_profile->getProperty('id'))); ?></a></td>
 											</tr>
 										</tbody>
 									</table>
