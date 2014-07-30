@@ -18,11 +18,38 @@ CREATE TABLE myl_subdomains
 	subdomain VARCHAR(30) NOT NULL
 );
 
+CREATE TABLE myl_themes
+(
+	theme_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	theme_name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE myl_profiles
+(
+	admin_uid BIGINT NOT NULL,
+	is_fanpage BIT NOT NULL,
+	page_name VARCHAR(60) NOT NULL
+);
+
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (2, 'cerulean');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (3, 'cosmo');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (4, 'cyborg');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (5, 'darkly');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (6, 'flatly');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (7, 'journal');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (8, 'lumen');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (9, 'readable');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (10, 'simplex');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (11, 'slate');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (12, 'spacelab');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (13, 'superhero');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (14, 'united');
+INSERT INTO myl_themes (theme_id, theme_name) VALUES (15, 'yeti');
+
+/***********************************************************/
+
 SELECT * FROM myl_accounts;
 SELECT * FROM myl_subdomains;
-
-DELETE FROM myl_accounts;
-DELETE FROM myl_subdomains;
-
-DROP TABLE myl_accounts;
-DROP TABLE myl_subdomains;
+SELECT * FROM myl_themes;
+SELECT * FROM myl_profiles;

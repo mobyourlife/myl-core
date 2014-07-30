@@ -19,6 +19,8 @@ $require_logout[] = "login-social";
 /* Verifica a autenticação do usuário. */
 if (isset($fb_profile))
 {
+	save_user_info($fb_profile);
+
 	/* Verifica o registro do usuário. */
 	if (is_user_registered($fb_profile->getProperty('id')))
 	{

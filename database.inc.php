@@ -127,4 +127,18 @@ function get_register_date($fb_uid)
 	return $regdate;
 }
 
+function save_user_info($fb_profile)
+{
+	$fb_uid = $fb_profile->getProperty('id');
+	$is_fanpage = ((get_account_type($fb_uid) == "fanpage") ? true : false);
+	$page_name = $fb_profile->getProperty('name');
+
+	$db = db_conectar();
+	
+	$sql = sprintf("INSERT INTO myl_profiles (admin_uid, is_fanpage, page_name) VALUES (%s, %d, '%s') ON DUPLICATE KEY UPDATE page_name = '%s';", $fb_uid, $is_fanpage, $page_name, $page_name);
+	mysqli_query($db, $sql);
+	
+	mysqli_close($db);
+}
+
 ?>
