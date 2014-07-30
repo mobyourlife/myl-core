@@ -20,7 +20,7 @@ CREATE TABLE myl_subdomains
 
 CREATE TABLE myl_themes
 (
-	theme_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	theme_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	theme_name VARCHAR(30) NOT NULL
 );
 
@@ -28,7 +28,8 @@ CREATE TABLE myl_profiles
 (
 	admin_uid BIGINT NOT NULL,
 	is_fanpage BIT NOT NULL,
-	page_name VARCHAR(60) NOT NULL
+	page_name VARCHAR(60) NOT NULL,
+	theme_id INT NULL REFERENCES myl_themes (theme_id)
 );
 
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
