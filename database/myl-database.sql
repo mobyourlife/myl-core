@@ -32,6 +32,18 @@ CREATE TABLE myl_profiles
 	theme_id INT NULL REFERENCES myl_themes (theme_id)
 );
 
+CREATE TABLE myl_covers
+(
+	image_fbid BIGINT NOT NULL PRIMARY KEY,
+	page_fbid BIGINT NOT NULL REFERENCES myl_accounts (page_fbid),
+	updated_time DATETIME NOT NULL,
+	source_url VARCHAR(1024) NOT NULL,
+	width INT NOT NULL,
+	height INT NOT NULL,
+	offset_y INT NOT NULL,
+	is_downloaded BIT NOT NULL DEFAULT 0
+);
+
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (2, 'cerulean');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (3, 'cosmo');
@@ -54,3 +66,4 @@ SELECT * FROM myl_accounts;
 SELECT * FROM myl_subdomains;
 SELECT * FROM myl_themes;
 SELECT * FROM myl_profiles;
+SELECT * FROM myl_covers;
