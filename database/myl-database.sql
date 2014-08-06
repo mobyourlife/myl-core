@@ -77,6 +77,14 @@ CREATE TABLE myl_fb_albums
 	synced_time DATETIME NULL
 );
 
+CREATE TABLE myl_fb_photos
+(
+	photo_id BIGINT NOT NULL PRIMARY KEY,
+	album_id BIGINT NOT NULL REFERENCES myl_fb_albums (album_id),
+	source_url VARCHAR(1024) NOT NULL,
+	thumbs_url VARCHAR(1024) NOT NULL
+);
+
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (2, 'cerulean');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (3, 'cosmo');
@@ -103,8 +111,10 @@ SELECT * FROM myl_covers;
 SELECT * FROM myl_categorias;
 SELECT * FROM myl_midia;
 SELECT * FROM myl_fb_albums;
+SELECT * FROM myl_fb_photos;
 
 /***********************************************************/
+DELETE FROM myl_fb_photos;
 DELETE FROM myl_fb_albums;
 DELETE FROM myl_midia;
 DELETE FROM myl_categorias;
