@@ -67,6 +67,16 @@ CREATE TABLE myl_midia
 	full_is_downloaded BIT NOT NULL DEFAULT 0
 );
 
+CREATE TABLE myl_fb_albums
+(
+	album_id BIGINT NOT NULL PRIMARY KEY,
+	page_fbid BIGINT NOT NULL REFERENCES myl_accounts (page_fbid),
+	album_type VARCHAR(15) NOT NULL,
+	count INT NOT NULL DEFAULT 0,
+	updated_time DATETIME NOT NULL,
+	synced_time DATETIME NULL
+);
+
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (2, 'cerulean');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (3, 'cosmo');
@@ -92,9 +102,10 @@ SELECT * FROM myl_profiles;
 SELECT * FROM myl_covers;
 SELECT * FROM myl_categorias;
 SELECT * FROM myl_midia;
-
+SELECT * FROM myl_fb_albums;
 
 /***********************************************************/
+DELETE FROM myl_fb_albums;
 DELETE FROM myl_midia;
 DELETE FROM myl_categorias;
 DELETE FROM myl_covers;
