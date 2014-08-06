@@ -48,6 +48,9 @@ function register_user($admin_uid, $admin_name, $admin_email, $account_id, $acce
 		$sql = sprintf("INSERT INTO myl_accounts (admin_uid, admin_name, admin_email, page_fbid, register_date, access_token) VALUES (%s, '%s', '%s', %s, '%s', '%s');"
 			, $admin_uid, $admin_name, $admin_email, $account_id, mobdate(), $access_token);
 		mysqli_query($db, $sql);
+		
+		mysqli_query($db, sprintf("INSERT INTO myl_categorias (page_fbid, nome_categoria, nome_seo) VALUES (%s, '%s', '%s');", $account_id, "Fotos", "fotos"));
+		mysqli_query($db, sprintf("INSERT INTO myl_categorias (page_fbid, nome_categoria, nome_seo) VALUES (%s, '%s', '%s');", $account_id, "Vídeos", "videos"));
 	}
 	
 	mysqli_close($db);

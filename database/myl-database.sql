@@ -92,3 +92,13 @@ SELECT * FROM myl_profiles;
 SELECT * FROM myl_covers;
 SELECT * FROM myl_categorias;
 SELECT * FROM myl_midia;
+
+
+/***********************************************************/
+DELETE FROM myl_midia;
+DELETE FROM myl_categorias;
+DELETE FROM myl_covers;
+DELETE FROM myl_profiles;
+DELETE FROM myl_themes;
+DELETE FROM myl_subdomains;
+DELETE FROM myl_accounts;
