@@ -141,4 +141,33 @@ function save_user_info($fb_profile)
 	mysqli_close($db);
 }
 
+function get_page_fbid($admin_uid)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("SELECT page_fbid FROM myl_accounts WHERE admin_uid = %s;", $admin_uid);
+	$res = mysqli_query($db, $sql);
+	$page_fbid = $admin_uid;
+	
+	if (mysqli_num_rows($res) != 0)
+	{
+		$row = mysqli_fetch_assoc($res);
+		$page_fbid = $row['page_fbid'];
+	}
+	
+	mysqli_close($db);
+	
+	return $page_fbid;
+}
+
+function save_page_info($fb_account)
+{
+	$db = db_conectar();
+	
+	$sql = sprintf("UPDATE myl_accounts SET admin_name = '%s', access_token = '%s' WHERE page_fbid = %s;", $fb_account->name, $fb_account->access_token, $fb_account->id);
+	mysqli_query($db, $sql);
+	
+	mysqli_close($db);
+}
+
 ?>

@@ -20,6 +20,22 @@ $require_logout[] = "login-social";
 if (isset($fb_profile))
 {
 	save_user_info($fb_profile);
+	
+	/* Verifica se é uma fanpage. */
+	$type = get_account_type($fb_profile->getProperty('id'));
+	if ($type == "fanpage")
+	{
+		$fbid = get_page_fbid($fb_profile->getProperty('id'));
+		$accounts = fb_get_accounts()->asArray();
+		
+		foreach($accounts as $acc)
+		{
+			if($acc->id == $fbid)
+			{
+				save_page_info($acc);
+			}
+		}
+	}
 
 	/* Verifica o registro do usuário. */
 	if (is_user_registered($fb_profile->getProperty('id')))
