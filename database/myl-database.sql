@@ -52,6 +52,21 @@ CREATE TABLE myl_categorias
 	nome_seo VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE myl_midia
+(
+	midia_fbid BIGINT NOT NULL PRIMARY KEY,
+	id_categoria BIGINT NOT NULL REFERENCES myl_categorias (id_categoria),
+	updated_time DATETIME NOT NULL,
+	thumb_source_url VARCHAR(1024) NOT NULL,
+	thumb_width INT NOT NULL,
+	thumb_height INT NOT NULL,
+	thumb_is_downloaded BIT NOT NULL DEFAULT 0,
+	full_source_url VARCHAR(1024) NOT NULL,
+	full_width INT NOT NULL,
+	full_height INT NOT NULL,
+	full_is_downloaded BIT NOT NULL DEFAULT 0
+);
+
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (1, 'amelia');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (2, 'cerulean');
 INSERT INTO myl_themes (theme_id, theme_name) VALUES (3, 'cosmo');
@@ -76,3 +91,4 @@ SELECT * FROM myl_themes;
 SELECT * FROM myl_profiles;
 SELECT * FROM myl_covers;
 SELECT * FROM myl_categorias;
+SELECT * FROM myl_midia;
