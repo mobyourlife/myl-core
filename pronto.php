@@ -37,7 +37,7 @@ require_once "core.inc.php";
 				Clique no botão abaixo para ir ao seu novo site.
 			</p>
 			<p>
-				<a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>" target="_blank" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
+				<a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>:81" target="_blank" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
 			</p>
 		</div>
 	</div>

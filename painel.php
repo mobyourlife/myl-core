@@ -53,13 +53,13 @@ require_once "core.inc.php";
 											</tr>
 											<tr>
 												<td>Seu endereço</td>
-												<td><a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>" target="_blank"><?php print(get_user_domain($fb_profile->getProperty('id'))); ?></a></td>
+												<td><a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>:81" target="_blank"><?php print(get_user_domain($fb_profile->getProperty('id'))); ?></a></td>
 											</tr>
 										</tbody>
 									</table>
 
 									<div class="center">
-										<a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>" target="_blank" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
+										<a href="<?php print(get_user_fqdn($fb_profile->getProperty('id'))); ?>:81" target="_blank" class="btn btn-lg btn-info"><span class="fa fa-globe jump-5"></span> Acessar meu site</a>
 									</div>
 								</div>
 							</div>
