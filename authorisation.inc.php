@@ -36,6 +36,13 @@ if (isset($fb_profile))
 			}
 		}
 	}
+	
+	/* Sempre sincroniza uma vez a cada login. */
+	if (isset($_SESSION['synced']) || $_SESSION['synced'] != true])
+	{
+		system(sprintf("node %s", $myl_backsync));
+		$_SESSION['synced'] = true;
+	}
 
 	/* Verifica o registro do usuário. */
 	if (is_user_registered($fb_profile->getProperty('id')))
