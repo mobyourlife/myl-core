@@ -65,7 +65,7 @@ if (isset($fb_profile))
 else
 {
 	/* Está deslogado e a página é permitida somente para logados. */
-	if (in_array($page, $require_login))
+	if (in_array($page, $require_login) || in_array($page, $require_register))
 	{
 		header("Location: " . $website_root . "/login-social");
 	}
