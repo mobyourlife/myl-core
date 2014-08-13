@@ -36,17 +36,17 @@ if (isset($fb_profile))
 			}
 		}
 	}
-	
-	/* Sempre sincroniza uma vez a cada login. */
-	if (!isset($_SESSION['synced']) || $_SESSION['synced'] != true)
-	{
-		shell_exec("node " . $myl_backsync . "> /dev/null 2>/dev/null &");
-		$_SESSION['synced'] = true;
-	}
 
 	/* Verifica o registro do usuário. */
 	if (is_user_registered($fb_profile->getProperty('id')))
 	{
+		/* Sempre sincroniza uma vez a cada login. */
+		if (!isset($_SESSION['synced']) || $_SESSION['synced'] != true)
+		{
+			shell_exec("node " . $myl_backsync . "> /dev/null 2>/dev/null &");
+			$_SESSION['synced'] = true;
+		}
+	
 		/* Está logado mas a página é permitida somente para deslogados. */
 		if (in_array($page, $require_logout))
 		{
