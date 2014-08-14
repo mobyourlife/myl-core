@@ -13,7 +13,7 @@ $('.fb-login').click(function() {
 		if (response.authResponse) {
 			location.href = './painel';
 		}
-	}, { scope: 'manage_pages,user_photos' });
+	}, { scope: 'email,manage_pages,user_photos' });
 });
 
 $('.fb-logout').click(function() {
