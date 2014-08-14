@@ -24,7 +24,7 @@ require_once "core.inc.php";
 		<p>Enquanto o aplicativo estiver em fase de desenvolvimento, não nos responsabilizamos por sites excluídos repentinamente. A partir do momento em que declararmos o início da fase de produção do aplicativo, nós iniciaremos o suporte ao usuário via atendimento online, email e telefone.</p>
 		<p>O Mob Your Life realiza apenas leitura de informações de seu Facebook, e jamais realiza alterações. Todas as permissões que pedimos quando você se cadastra são somente para leitura de dados. Portanto, nós garantimos que nenhum de seu conteúdo em seu perfil do Facebook será incluído, alterado ou excluído através deste aplicativo.</p>
 		<p>Use o aplicativo exclusivamente caso você deseje testá-lo antes de o mesmo se tornar disponível em sua fase estável. Esteja ciente de que o mesmo está em fase alfa de desenvolvimento e pode apresentar problemas ou perda de dados (apenas em seu site, nunca em seu Facebook).</p>
-		<p>Solicitamos que qualquer problema enfrentado durante o uso do aplicativo seja reportado para o endereço de email <a href="mailto:suporte@mobyourlife.com.br"></a> para que possamos corrigi-los tão prontamente quanto possível.<p>
+		<p>Solicitamos que qualquer problema enfrentado durante o uso do aplicativo seja reportado para o endereço de email <a href="mailto:suporte@mobyourlife.com.br">suporte@mobyourlife.com.br</a> para que possamos corrigi-los tão prontamente quanto possível.<p>
 	</div>
 	
 	<?php require "footer.inc.php"; ?>
