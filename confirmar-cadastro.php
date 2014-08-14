@@ -138,6 +138,20 @@ $fb_accounts = fb_get_accounts();
 					<span id="subdomain-status" class="btn text-danger" style="display:none"><strong></strong></span>
 				  </div>
 				</div>
+			  
+				<!-- Termos de serviço -->
+				<div class="form-group">
+				  <label class="col-md-3 control-label" for="name">Termos de serviço</label>
+				  <div class="col-md-5">
+					<div class="input-group">
+						<input id="terms-of-service" type="checkbox">
+						Eu declaro estar ciente e concordar com os <a href="<?php printlink("termos-de-servico"); ?>" target="_blank">termos de serviço</a>.
+					</div>
+				  </div>
+				  <div class="col-md-4">
+					<span id="subdomain-status" class="btn text-danger" style="display:none"><strong></strong></span>
+				  </div>
+				</div>
 		
 				<!-- Envio do formulário -->
 				<div class="form-group">
