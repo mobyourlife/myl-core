@@ -11,6 +11,8 @@
 			<li>&middot;</li>
 			<li><a href="<?php printlink("duvidas-frequentes"); ?>">Dúvidas Frequentes</a></li>
 			<li>&middot;</li>
+			<li><a href="<?php printlink("termos-de-servico"); ?>">Termos de Serviço</a></li>
+			<li>&middot;</li>
 			<li><a href="<?php printlink("contato"); ?>">Contato</a></li>
 		</ul>
 		
