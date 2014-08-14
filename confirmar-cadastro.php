@@ -138,11 +138,22 @@ $fb_accounts = fb_get_accounts();
 					<span id="subdomain-status" class="btn text-danger" style="display:none"><strong></strong></span>
 				  </div>
 				</div>
-		
+
+				<!-- Termos de serviço -->
+				<div class="form-group">
+				  <label class="col-md-3 control-label" for="name">Termos de serviço</label>
+				  <div class="col-md-9">
+					<div class="input-group">
+						<input id="terms-of-service" type="checkbox">
+						Eu declaro estar ciente e concordar com os <a href="<?php printlink("termos-de-servico"); ?>" target="_blank">termos de serviço</a>.
+					</div>
+				  </div>
+				</div>		
+
 				<!-- Envio do formulário -->
 				<div class="form-group">
 				  <div class="col-md-12 text-right">
-					<button type="submit" class="btn btn-info btn-lg">Continuar</button>
+					<button type="submit" class="btn btn-info btn-lg" onclick="if (!$('#terms-of-service').prop('checked')) { alert('Você deve aceitar os termos de serviço para continuar!'); return false; }">Continuar</button>
 				  </div>
 				</div>
 			  </fieldset>
